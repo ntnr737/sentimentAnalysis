@@ -40,12 +40,10 @@ emojis = {
 
 # Streamlit app
 st.title('Tweet Sentiment Analysis')
-st.sidebar.write("Created by Nitin Rai")
-st.sidebar.write("Website: [Nitin Rai's Blog](https://nitinkrai.blogspot.com/)")
 
-tweet_input = st.sidebar.text_input('Enter your tweet:', value='', max_chars=None)
+tweet_input = st.text_input('Enter your tweet:', value='', max_chars=None)
 
-if st.sidebar.button('Analyze'):
+if st.button('Analyze'):
     if tweet_input:
         results = sentiment_analysis(tweet_input)
         st.write("Sentiment Analysis Results:")
@@ -54,3 +52,6 @@ if st.sidebar.button('Analyze'):
             st.write(f"{label}: {score:.4f} {emoji}")
     else:
         st.write("Please enter a tweet.")
+
+# Place the text at the bottom
+st.write("Created By Nitin Rai | [Nitin Rai's Blog](https://nitinkrai.blogspot.com)")
