@@ -54,4 +54,4 @@ if st.button('Analyze'):
         st.write("Please enter a tweet.")
 
 # Place the text at the bottom
-st.write("Created By Nitin Rai | [Nitin Rai's Blog](https://nitinkrai.blogspot.com)")
+st.write("For more : [Nitin Rai's Blog](https://nitinkrai.blogspot.com)")
