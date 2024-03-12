@@ -1,37 +1,56 @@
-from twitterscraper import query_tweets
-import datetime as dt
-import pandas as pd
+import streamlit as st
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from scipy.special import softmax
 
-# Specify the user you want to fetch tweets from
-user = 'PMOIndia'
+# Load model and tokenizer
+roberta = "cardiffnlp/twitter-roberta-base-sentiment"
+model = AutoModelForSequenceClassification.from_pretrained(roberta)
+tokenizer = AutoTokenizer.from_pretrained(roberta)
+labels = ['Negative', 'Neutral', 'Positive']
 
-# Define the date range
-begin_date = dt.date(2024, 3, 3)
-end_date = dt.date(2024, 3, 8)
+# Function to preprocess the tweet
+def preprocess_tweet(tweet):
+    tweet_words = []
+    for word in tweet.split(' '):
+        if word.startswith('@') and len(word) > 1:
+            word = '@user'
+        elif word.startswith('http'):
+            word = "http"
+        tweet_words.append(word)
+    return " ".join(tweet_words)
 
-# Specify other parameters
-limit = 10000
+# Function for sentiment analysis
+def sentiment_analysis(tweet):
+    tweet_proc = preprocess_tweet(tweet)
+    encoded_tweet = tokenizer(tweet_proc, return_tensors='pt')
+    output = model(**encoded_tweet)
+    scores = output[0][0].detach().numpy()
+    scores = softmax(scores)
+    results = {}
+    for i in range(len(scores)):
+        results[labels[i]] = scores[i]
+    return results
 
-# Construct the search query with the user's username and date range
-search_query = f'from:{user} since:{begin_date} until:{end_date}'
+# Emojis for sentiment labels
+emojis = {
+    'Negative': '😞',
+    'Neutral': '😐',
+    'Positive': '😊'
+}
 
-# Query tweets based on the search query
-tweets = query_tweets(query=search_query, limit=limit)
+# Streamlit app
+st.title('Tweet Sentiment Analysis')
+st.sidebar.write("Created by Nitin Rai")
+st.sidebar.write("Website: [Nitin Rai's Blog](https://nitinkrai.blogspot.com/)")
 
-# Create a DataFrame with the tweet text
-df = pd.DataFrame({'text': [tweet.text for tweet in tweets]})
+tweet_input = st.sidebar.text_input('Enter your tweet:', value='', max_chars=None)
 
-# Print the DataFrame containing the tweet text
-print("Tweets by PMOIndia:")
-print(df)
-
-# Use this if you want to search for a specific phrase or word within the same date range
-search_phrase = 'Content'
-tweets_phrase = query_tweets(search_phrase, limit=limit)
-
-# Create a DataFrame with the tweet text containing the specified phrase or word
-df_phrase = pd.DataFrame({'text': [tweet.text for tweet in tweets_phrase]})
-
-# Print the DataFrame containing the tweets with the specified phrase or word
-print("\nTweets containing 'Content':")
-print(df_phrase)
+if st.sidebar.button('Analyze'):
+    if tweet_input:
+        results = sentiment_analysis(tweet_input)
+        st.write("Sentiment Analysis Results:")
+        for label, score in results.items():
+            emoji = emojis.get(label, '')
+            st.write(f"{label}: {score:.4f} {emoji}")
+    else:
+        st.write("Please enter a tweet.")
