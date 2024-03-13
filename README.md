@@ -33,10 +33,10 @@ Sreenshots :
 In this case im taking a Twitte from twitter or x.com :
 Was a ‘tunnel-tourist’ today & checked out the newly minted undersea tunnel that’s part of the new coastal road in Mumbai! 
 
-![image](https://github.com/ntnr737/sentimentAnalysis/assets/38650706/3acc95d5-1490-4d00-9ffe-b2ffbc3d5c03)
-
 See Result
 ![image](https://github.com/ntnr737/sentimentAnalysis/assets/38650706/ae402104-7b37-438a-86e1-2e2b2a1ed88f)
+![image](https://github.com/ntnr737/sentimentAnalysis/assets/38650706/0cf3aa96-7dc1-4e9d-9994-b973946898b5)
+
 
 
 
