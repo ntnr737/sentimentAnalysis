@@ -1,4 +1,4 @@
-![image](https://github.com/ntnr737/sentimentAnalysis/assets/38650706/4a323115-d735-4b32-a14d-0cec114d81a4)![image](https://github.com/ntnr737/sentimentAnalysis/assets/38650706/69a0c855-6e3f-47c3-82e2-0cacd36383c4)
+![image](https://github.com/ntnr737/sentimentAnalysis/assets/38650706/69a0c855-6e3f-47c3-82e2-0cacd36383c4)
 
 # Sentiment Analysis
 
