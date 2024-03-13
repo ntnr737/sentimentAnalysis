@@ -1,4 +1,4 @@
-![image](https://github.com/ntnr737/sentimentAnalysis/assets/38650706/69a0c855-6e3f-47c3-82e2-0cacd36383c4)
+
 
 # Sentiment Analysis
 
@@ -25,6 +25,7 @@ About
 This app was created by Nitin Rai as a demonstration of sentiment analysis using pre-trained models. Feel free to reach out for any questions or feedback.
 
 Sreenshots :
+![image](https://github.com/ntnr737/sentimentAnalysis/assets/38650706/69a0c855-6e3f-47c3-82e2-0cacd36383c4)
 ![image](https://github.com/ntnr737/sentimentAnalysis/assets/38650706/031cb19c-cd16-4bcb-a8b2-71ec877c7c57)
 ![image](https://github.com/ntnr737/sentimentAnalysis/assets/38650706/4b6500d6-83f1-4516-8e10-922235255b22)
 ![image](https://github.com/ntnr737/sentimentAnalysis/assets/38650706/4b6500d6-83f1-4516-8e10-922235255b22)
