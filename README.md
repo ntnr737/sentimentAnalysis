@@ -1,3 +1,5 @@
+![image](https://github.com/ntnr737/sentimentAnalysis/assets/38650706/69a0c855-6e3f-47c3-82e2-0cacd36383c4)
+
 # Sentiment Analysis
 
 This Streamlit app analyzes the sentiment of a given tweet using a pre-trained sentiment analysis model.
